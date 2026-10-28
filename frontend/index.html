@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101827">
+  <meta name="description" content="FareFusion helps you compare ride options in one clean dashboard.">
+  <title>FareFusion — Compare rides, travel smarter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="announcement"><span class="announcement-dot"></span> One route. Multiple ride options. Smarter decisions.</div>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="#" aria-label="FareFusion home"><span class="brand-mark">F<span>F</span></span><span>fare<span class="brand-light">fusion</span></span></a>
+      <div class="nav-links">
+        <a href="#compare">Compare rides</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#saved">Saved searches</a>
+      </div>
+      <a class="nav-cta" href="#compare">Find my fare <span aria-hidden="true">↗</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-icon">✳</span> YOUR SMARTER RIDE COMPANION</div>
+        <h1>Same destination.<br><span>Better fare.</span></h1>
+        <p class="hero-lead">Stop jumping between ride apps. Compare options in one place and make your next trip a little smarter.</p>
+        <div class="hero-points"><span>✓ Less app switching</span><span>✓ Clear comparisons</span><span>✓ Your choice, always</span></div>
+        <a class="text-link" href="#compare">Let's compare <span>↓</span></a>
+      </div>
+      <div class="hero-art" aria-label="Illustration of a route between two locations">
+        <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+        <div class="map-card">
+          <div class="map-top"><span class="map-label"><span class="live-dot"></span> YOUR ROUTE</span><span class="map-menu">•••</span></div>
+          <svg class="route-svg" viewBox="0 0 340 250" role="img" aria-label="Stylized route map">
+            <path d="M-10 55 C70 25 80 105 150 88 S250 15 350 60" class="road road-wide"/>
+            <path d="M-10 55 C70 25 80 105 150 88 S250 15 350 60" class="road road-center"/>
+            <path d="M20 210 C80 170 95 220 145 177 S240 140 350 190" class="road road-wide"/>
+            <path d="M20 210 C80 170 95 220 145 177 S240 140 350 190" class="road road-center"/>
+            <path d="M80 -5 C100 50 65 90 105 130 S180 180 160 260" class="road road-wide"/>
+            <path d="M80 -5 C100 50 65 90 105 130 S180 180 160 260" class="road road-center"/>
+            <path d="M245 -5 C210 45 270 80 235 125 S280 195 270 260" class="road road-wide"/>
+            <path d="M245 -5 C210 45 270 80 235 125 S280 195 270 260" class="road road-center"/>
+            <path d="M63 178 C94 158 112 120 156 121 S217 98 255 62" class="route-line"/>
+            <circle cx="63" cy="178" r="9" class="route-start"/><circle cx="63" cy="178" r="3" fill="#fff"/>
+            <circle cx="255" cy="62" r="11" class="route-end"/><circle cx="255" cy="62" r="4" fill="#fff"/>
+          </svg>
+          <div class="map-pin-label pickup-label"><span class="pin-mini"></span><span><b>Pickup</b><small>Your starting point</small></span></div>
+          <div class="map-pin-label drop-label"><span class="pin-mini end-pin"></span><span><b>Destination</b><small>Where you're headed</small></span></div>
+          <div class="route-distance"><span>↗</span><div><b>Route ready</b><small>Compare your options below</small></div></div>
+        </div>
+        <div class="floating-chip chip-save"><span class="chip-icon">₹</span><div><b>Spend smarter</b><small>Compare before you go</small></div></div>
+        <div class="floating-chip chip-route"><span class="chip-icon purple">⌁</span><div><b>One simple search</b><small>All in one dashboard</small></div></div>
+      </div>
+    </section>
+
+    <section class="search-wrap container" id="compare">
+      <div class="search-heading"><div><span class="section-kicker">LET'S GET YOU THERE</span><h2>Where are you headed?</h2></div><span class="secure-note">⌁ &nbsp; Simple. Clear. Convenient.</span></div>
+      <form id="rideForm" class="search-form" novalidate>
+        <div class="location-field">
+          <label for="pickup">PICKUP LOCATION</label>
+          <div class="input-row"><span class="location-symbol pickup-symbol">●</span><input id="pickup" name="pickup" type="text" placeholder="e.g. MRECW, Hyderabad" autocomplete="street-address" required maxlength="180"><button type="button" class="clear-field" data-clear="pickup" aria-label="Clear pickup">×</button></div>
+        </div>
+        <button type="button" id="swapLocations" class="swap-button" aria-label="Swap pickup and destination" title="Swap locations">↕</button>
+        <div class="location-field">
+          <label for="destination">DESTINATION</label>
+          <div class="input-row"><span class="location-symbol destination-symbol">◆</span><input id="destination" name="destination" type="text" placeholder="e.g. HITEC City, Hyderabad" required maxlength="180"><button type="button" class="clear-field" data-clear="destination" aria-label="Clear destination">×</button></div>
+        </div>
+        <div class="vehicle-field">
+          <label for="vehicleType">VEHICLE TYPE</label>
+          <select id="vehicleType" name="vehicleType"><option value="all">All vehicle types</option><option value="bike">Bike</option><option value="auto">Auto</option><option value="cab">Cab</option></select>
+        </div>
+        <button class="primary-button search-button" type="submit"><span>Compare rides</span><span class="button-arrow">↗</span></button>
+      </form>
+      <p class="form-hint" id="formHint">Enter both locations to compare available fare estimates. Demo fares are clearly labelled.</p>
+      <div id="statusMessage" class="status-message" role="status" aria-live="polite" hidden></div>
+    </section>
+
+    <section class="results-section container" id="results" aria-live="polite">
+      <div class="results-header">
+        <div><span class="section-kicker">YOUR OPTIONS</span><h2>Compare at a glance<span class="heading-period">.</span></h2><p id="resultsSubtitle">Enter your route to see fare estimates side by side.</p></div>
+        <div class="result-tools"><label class="filter-label" for="sortBy">Sort by</label><select id="sortBy"><option value="price">Lowest price</option><option value="duration">Shortest time</option><option value="provider">Provider name</option></select></div>
+      </div>
+      <div id="routeSummary" class="route-summary" hidden></div>
+      <div id="fareCards" class="fare-grid">
+        <div class="empty-card"><div class="empty-illustration">↗</div><h3>Your next ride, made simpler.</h3><p>Enter a pickup and destination above. We'll organize the available options here.</p></div>
+      </div>
+      <div id="comparisonInsight" class="comparison-insight" hidden></div>
+      <p class="data-disclaimer">FareFusion demo uses clearly labelled example fares unless an authorized live fare integration is configured. Actual provider prices, availability, tolls and surge pricing may differ.</p>
+    </section>
+
+    <section class="how-section" id="how-it-works">
+      <div class="container">
+        <div class="section-center"><span class="section-kicker">LESS TAPPING, MORE CLARITY</span><h2>A better way to choose your ride.</h2><p>Three simple steps between your starting point and a smarter choice.</p></div>
+        <div class="steps-grid">
+          <article class="step-card"><div class="step-number">01</div><div class="step-icon icon-mint">⌖</div><h3>Enter your route</h3><p>Tell FareFusion where you're starting and where you want to go.</p></article>
+          <article class="step-card"><div class="step-number">02</div><div class="step-icon icon-lilac">▤</div><h3>Compare the options</h3><p>See sample fare estimates, vehicle categories, and journey times together.</p></article>
+          <article class="step-card"><div class="step-number">03</div><div class="step-icon icon-peach">✦</div><h3>Choose what fits</h3><p>Sort by price or time, then decide which option works best for you.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="saved-section container" id="saved">
+      <div class="saved-heading"><div><span class="section-kicker">YOUR SHORTLIST</span><h2>Saved searches</h2><p>Keep a handy list of routes you've compared on this device.</p></div><button id="clearSaved" class="secondary-button" type="button">Clear all</button></div>
+      <div id="savedSearches" class="saved-list"><div class="saved-empty">No saved searches yet. Compare a route and save it for later.</div></div>
+    </section>
+
+    <section class="cta-section container">
+      <div class="cta-card"><div><span class="section-kicker light-kicker">BUILT FOR SMARTER EVERYDAY TRAVEL</span><h2>Your route. Your budget.<br> Your call.</h2><p>FareFusion puts the comparison first, so you can make the choice that feels right for you.</p></div><a href="#compare" class="cta-button">Compare a route <span>↗</span></a><div class="cta-decoration">F</div></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-inner"><a class="brand footer-brand" href="#"><span class="brand-mark">F<span>F</span></span><span>fare<span class="brand-light">fusion</span></span></a><p>Built as a student project to make ride comparison simpler.</p><span class="footer-copy">© <span id="currentYear"></span> FareFusion</span></div></footer>
+  <script src="script.js" defer></script>
+</body>
+</html>
